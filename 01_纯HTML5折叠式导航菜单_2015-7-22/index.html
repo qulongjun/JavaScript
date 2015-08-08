@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/cssReset.css" />
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<section id="left">
+			<nav class="menu" open>
+				<header class="header">商品保障</header>
+				<ul>
+					<li><a href="#">正品保障</a></li>
+					<li><a href="#">海外直供</a></li>
+				</ul>
+			</nav>
+			<nav class="menu" open>
+				<header class="header">新手帮助</header>
+				<ul class="navUl">
+					<li><a href="#">申请支付宝</a></li>
+					<li><a href="#">支付宝充值</a></li>
+				</ul>
+			</nav>
+			<nav class="menu" open>
+				<header class="header">支付方式</header>
+				<ul class="navUl">
+					<li><a href="#">支付宝快捷支付</a></li>
+					<li><a href="#">支付宝余额支付</a></li>
+					<li><a href="#">新手入门</a></li>
+				</ul>
+			</nav>
+			<nav class="menu" open>
+				<header class="header">商家支持</header>
+				<ul class="navUl">
+					<li><a href="#">商家规则</a></li>
+					<li><a href="#">国际招商</a></li>
+					<li><a href="#">服务商招募</a></li>
+					<li><a href="#">商家对接系统</a></li>
+					<li><a href="#">联系我们</a></li>
+				</ul>
+			</nav>
+		</section>
+		<script type="text/javascript">
+			$('.menu').children('header').click(function() {
+				if ($(this).siblings('ul').css('display') == 'block') {
+					$(this).siblings('ul').css('display', 'none');
+					$(this).parent().removeAttr('open');
+				} else {
+					$(this).siblings('ul').css('display', 'block');
+					$(this).parent().attr('open', 'open');
+				}
+			});
+		</script>
+	</body>
+
+</html>

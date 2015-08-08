@@ -1,0 +1,48 @@
+a {
+	text-decoration: none;
+}
+#left {
+	font-family: "微软雅黑";
+	width: 200px;
+	margin: 60px auto;
+	border: 1px solid #cccccc;
+}
+.menu header {
+	text-indent: 10px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight: 700px;
+	background: linear-gradient(to bottom, rgba(254, 254, 254, 0), rgba(204, 204, 204, 1));
+	cursor: pointer;
+}
+.menu header:before {
+	content: "+";
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	line-height: 40px;
+	margin-right: 10px;
+	font-size: 18px;
+	font-weight: 700
+}
+.menu[open] header:before {
+	content: "-";
+}
+.menu ul {
+	padding: 10px 0
+}
+.menu ul li {
+	list-style: none;
+	text-indent: 25px;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px
+}
+.menu ul li a {
+	display: block;
+	color: #666
+}
+.menu ul li a:hover {
+	text-decoration: underline;
+}
