@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			ul li {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<ul>
+				<li style="display: block;"><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<li><img src="img/4.jpg" /></li>
+				<li><img src="img/5.jpg" /></li>
+			</ul>
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				var timer = null; //定时器指针
+				var height = $('ul li:eq(0)').height();
+				var iNow = 0;
+				$('ol li').mouseover(function() {
+					var num = $(this).index();
+					var $this = $(this);
+					var moveSize = height * $this.index();
+					$(this).addClass('active').siblings().removeClass('active').end();
+					$('ul').animate({
+						top: -moveSize
+					}, 300);
+					iNow = num;
+				});
+				timer = setInterval(run, 2000);
+
+				function run() {
+					if (iNow == $('ul li').length - 1) {
+						iNow = 0;
+					} else {
+						iNow++;
+					}
+					$('ol li:eq(' + iNow + ')').addClass('active').siblings().removeClass('active').end();
+					$('ul').animate({
+						top: -height * iNow
+					}, 300);
+				}
+				$('#box').hover(function() {
+					clearInterval(timer);
+				}, function() {
+					timer = setInterval(run, 2000);
+				})
+			});
+		</script>
+	</body>
+
+</html>
