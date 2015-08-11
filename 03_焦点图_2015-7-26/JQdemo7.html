@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			ul li {
+				display: block;
+				position: absolute;
+				top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<ul>
+				<li style="display: block;"><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<li><img src="img/4.jpg" /></li>
+				<li><img src="img/5.jpg" /></li>
+			</ul>
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				var oneWidth = $('ul li:eq(0)').width();
+				var iNow = 0; //记录上一次的index值
+				for (var i = 1; i < $('ul li').length; i++) {
+					$('ul li:eq(' + i + ')').css('left', oneWidth + 'px');
+				}
+				$('ol li').mouseover(function() {
+					var num = $(this).index();
+					$(this).addClass('active').siblings().removeClass('active').end();
+					if (num > iNow) { //如果这次需要移动的图片位于上次需要移动的之后，则从右边往左边移动
+						$('ul li:eq(' + iNow + ')').stop().animate({
+							'left': -oneWidth
+						}, 300);
+					} else if (num < iNow){ //如果这次需要移动的图片位于上次移动的之前，则从左边往右边移动
+						$('ul li:eq(' + iNow + ')').stop().animate({
+							'left': oneWidth
+						}, 300);
+					}
+					iNow = num;
+					//移入时候使用
+					$('ul li:eq(' + num + ')').stop().animate({
+						'left': 0
+					}, 300).show();
+				});
+			});
+		</script>
+	</body>
+
+</html>

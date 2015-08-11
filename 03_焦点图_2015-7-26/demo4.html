@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			ul li {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<li><img src="img/4.jpg" /></li>
+				<li><img src="img/5.jpg" /></li>
+			</ul>
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oUl = document.getElementsByTagName('ul')[0];
+				var aLiUl = oUl.getElementsByTagName('li');
+				var oOl = document.getElementsByTagName('ol')[0];
+				var oLiOl = oOl.getElementsByTagName('li');
+				var oneHeight = aLiUl[0].offsetHeight;
+				for (var i = 0; i < oLiOl.length; i++) {
+					oLiOl[i].index = i; /*将ol中的li绑定index，使得ul中的li和ol中的li对应*/
+					oLiOl[i].onmouseover = function() { /*为鼠标移入添加事件*/
+						for (var i = 0; i < oLiOl.length; i++) {
+							oLiOl[i].className = ''; /*移除所有li的class*/
+						}
+						this.className = 'active'; /*为当前移入项添加class*/
+						startMove(oUl, {
+							top: -this.index * oneHeight
+						})
+					};
+				}
+			};
+		</script>
+	</body>
+
+</html>

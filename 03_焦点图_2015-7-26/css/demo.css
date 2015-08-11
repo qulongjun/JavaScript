@@ -1,0 +1,56 @@
+body,
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+img {
+	border: none;
+	vertical-align: top;
+}
+#box {
+	width: 470px;
+	height: 150px;
+	position: relative;
+	margin: 30px auto;
+	overflow: hidden;
+}
+ul {
+	width: 470px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	/*堆叠顺序*/
+}
+ul li {
+	width: 470px;
+	display: none;
+	
+}
+ol {
+	z-index: 2;
+	width: 120px;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+ol li {
+	width: 20px;
+	height: 20px;
+	display: inline;
+	float: left;
+	margin: 0 2px;
+	color: #f60;
+	background: #fff;
+	line-height: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+ol .active {
+	background: #f60;
+	color: #fff;
+}
